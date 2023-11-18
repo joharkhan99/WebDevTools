@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Search from "./search";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+const data = require('../products/commands.json')
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -70,37 +70,11 @@ export default function Nav() {
             ref={dropdownRef}
             className="absolute right-0 mt-2 py-2 bg-white rounded shadow-lg z-75 w-40"
           >
-            <a
-              href="customizer/button"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >
-              Buttons
-            </a>
-            <hr />
-            <a
-              href="customizer/LoremIpsumGenerator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >
-              Lorem Ipsum Generator
-            </a>
-            <a
-              href="customizer/CupcakeIpsumGenerator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >
-              Cupcake Ipsum Generator
-            </a>
-            <a
-              href="customizer/conversionCalculator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >
-              Conversion Calculator
-            </a>
-            <a
-              href="customizer/colorPicker"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-            >
-              Color picker
-            </a>
+           {data.map(element => (
+             <a href={element.url} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+               {element.name}
+             </a>
+           ))}
           </div>
         )}
       </div>

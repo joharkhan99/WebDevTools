@@ -2,7 +2,7 @@
 import Nav from "./assets/nav";
 import React from "react";
 import { useState, useEffect } from "react";
-
+import Image from "next/image";
 export default function Home({ state }) {
   const [contributors, setContributors] = useState([]);
 
@@ -86,29 +86,31 @@ export default function Home({ state }) {
           className="my-9 max-w-[26rem] md:max-w-[40rem]  break-words block py-6 md:p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
           <div className="flex justify-center items-center">
-            <div className="grid gap-2 grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-3 grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
               {contributors && contributors.length > 0 ? (
                 contributors.map((item, index) => (
-                  <div
-                    key={index}
-                    className="bg-gray-700 rounded-lg p-4 flex flex-col items-center justify-center"
-                  >
-                    <a
-                      href={item.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className=""
-                    >
-                      <img
-                        src={item.avatar_url}
-                        alt={item.login}
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 mr-2 rounded-full self-center"
-                      />
-                      {item.login}
-                    </a>
+                  <div className=" relative group">
+                    <div className=" absolute inset-0  bg-gray-400 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition duration-200"/>
+                    
+                    <div
+                      key={index}
+                      className=" relative bg-gray-700 rounded-lg p-4 flex justify-center text-center items-center ">
+                      <a
+                        href={item.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className=""
+                      >
+                        <Image src={item.avatar_url} width={48}
+                          alt="Profile Pic"
+                          height={48}
+                          className="w-12 h-12 rounded-full self-center"></Image>
+                        <p className=" text-xs">{item.login}</p>
+                        
+                      </a>
+                    </div>
                   </div>
+                  
                 ))
               ) : (
                 <p className="text-white">No data available</p>

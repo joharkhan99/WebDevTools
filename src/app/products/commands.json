@@ -1,0 +1,22 @@
+[
+    {
+        "name":"Buttons",
+        "url": "customizer/button"
+        
+    },{
+        "name":"Color Picker",
+        "url": "customizer/colorPicker"
+        
+    },{
+        "name":"Conversion Calculator",
+        "url": "customizer/conversionCalculator"
+    },{
+        "name":"Cupcake Ipsum Generator",
+        "url": "customizer/CupcakeIpsumGenerator"
+        
+    },{
+        "name":"LoremIpsumGenerator",
+        "url": "customizer/LoremIpsumGenerator"
+        
+    }
+]

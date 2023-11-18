@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
+const data = require('../products/commands.json')
 export default function Search() {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
   const [searchResults, setSearchResults] = useState([]); // State to store the filtered search results
@@ -34,40 +34,16 @@ export default function Search() {
       {
         id: 1,
         name: "Code editor",
-        link: "https://web-dev-tools.vercel.app/codeedit",
-      },
-      {
-        id: 2,
-        name: "Button customizer",
-        link: "https://web-dev-tools.vercel.app/customizer/button",
-      },
-      {
-        id: 3,
-        name: "Lorem Ipsum Generator",
-        link: "https://web-dev-tools.vercel.app/customizer/LoremIpsumGenerator",
-      },
-      {
-        id: 4,
-        name: "Conversion Calculator",
-        link: "https://web-dev-tools.vercel.app/customizer/conversionCalculator",
-      },
-      {
-        id: 5,
-        name: "Cupcake Ipsum Generator",
-        link: "https://web-dev-tools.vercel.app/customizer/CupcakeIpsumGenerator",
-      },
-      {
-        id: 6,
-        name: "Color Picker",
-        link: "https://web-dev-tools.vercel.app/customizer/colorPicker"
+        url: "codeedit",
       },
       {
         id: 7,
         name: "Mark down Editor",
-        link: "https://web-dev-tools.vercel.app/MD"
+        url: "MD"
       }
     ];
-
+    toolList.push(...data);
+    console.log(data)
     const filteredData = toolList.filter(
       (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()), // Filter the JSON data based on the search value
     );
@@ -98,9 +74,9 @@ export default function Search() {
           className="bg-white border border-gray-300 ml-4 shadow absolute z-10"
         >
           {searchResults.map((item) => (
-            <a href={item.link}>
+            <a href={item.url}>
               <li
-                key={item.id}
+                key={item.name}
                 className="px-4 py-2 text-black hover:bg-gray-100 cursor-pointer"
               >
                 {item.name}
